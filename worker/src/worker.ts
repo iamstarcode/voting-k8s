@@ -45,9 +45,9 @@ export class Worker {
       const redisClient = await Worker.getRedisClient();
       const pgsql = await Worker.getPgsql();
       const voteString: any = await redisClient.lPop('votes');
-      const vote = JSON.parse(voteString);
 
-      if (vote !== null) {
+      if (voteString !== null) {
+        const vote = JSON.parse(voteString);
         console.log(`Processing vote for '${vote.vote}' by '${vote.voter_id}'`);
         await this.updateVote(vote.voter_id, vote.vote);
       } else {
