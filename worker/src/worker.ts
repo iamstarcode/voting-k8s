@@ -1,4 +1,3 @@
-import { promisify } from 'util';
 import { RedisClientType, createClient } from 'redis';
 import { Client } from 'pg';
 
